@@ -16,4 +16,5 @@ echo "Fetching price for $COIN..."
 # The JSON looks similar to: {"symbol":"BTCUSDT","price":"63000.00000000"}
 # Use `grep`, `sed`, `awk`, or `jq` (if installed) to extract just the exact price number.
 # Print the output in this format: "Current price of $COIN is: $X.XX"
-
+PRICE=$(curl -s "$API_URL" | jq -r '.price')
+echo "Current price of $COIN is: $PRICE"
