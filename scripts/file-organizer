@@ -14,5 +14,10 @@ fi
 # TODO: Add logic to create an 'Images' folder inside $DIR and move all .jpg and .png files to it.
 # Then, create a 'Documents' folder and move all .txt and .pdf files.
 # Hint: use `mkdir -p` and `mv`.
+mkdir -p "$DIR/Images"
+mv *.jpg *.png "$DIR/Images/" 2>/dev/null
+
+mkdir -p "$DIR/Documents"
+mv *.txt *.pdf "$DIR/Documents/" 2>/dev/null
 
 echo "Organization complete!"
