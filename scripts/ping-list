@@ -19,4 +19,12 @@ echo "---"
 # If the ping command succeeds (i.e. exit code 0), print "$domain is UP".
 # Otherwise print "$domain is DOWN! ⚠️".
 # Ensure you close the loop at the bottom by redirecting the file into it: `< "$FILE"`.
-
+while IFS= read -r domain; do
+    domain="${domain%$'\r'}"      
+    [[ -z "$domain" ]] && continue  
+    if ping -c 1 -W 2 "$domain" > /dev/null 2>&1; then
+        echo "$domain is UP"
+    else
+        echo "$domain is DOWN! ⚠️"
+    fi
+done < "$FILE"
