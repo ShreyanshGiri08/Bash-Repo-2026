@@ -6,8 +6,10 @@
 # TODO: Accept a city name as a parameter ($1). If no city is provided, fetch
 # the default weather for the current IP. Add your logic to set `CITY=$1` if
 # `$1` is not empty, otherwise leave it blank.
-
-CITY=""
-
+if [ -n "$1" ]; then
+    CITY="$1"
+else
+    CITY=""
+fi
 # Fetching from wttr.in
 curl -s "wttr.in/${CITY}?0"
